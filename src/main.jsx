@@ -14,12 +14,16 @@ const router = createBrowserRouter([
     element: <Homepage/>
   },
   {
-    path: '/dashboard',
-    element: <Dashboard/>,
-    children: [{
-      path: '/dashboard/chats/:id',
-      element: <Chatpage/>
-    }]
+    children: [
+      {
+        path: '/dashboard/chats/:id',
+        element: <Chatpage/>
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard/>,
+      }
+    ]
   },
   {
     path: '/signin',
@@ -34,5 +38,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}/>
-  </StrictMode>,
+  </StrictMode>
 )
