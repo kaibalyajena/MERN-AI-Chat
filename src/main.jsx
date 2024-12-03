@@ -7,31 +7,37 @@ import Dashboard from './pages/dashboard/dashboard'
 import Chatpage from './pages/chatpage/chatpage'
 import SigninPage from './pages/signinPage/signinPage'
 import SignupPage from './pages/signupPage/signupPage'
+import RootLayout from './layouts/rootLayout/rootLayout'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Homepage/>
-  },
-  {
+    element: <RootLayout/>,
     children: [
       {
-        path: '/dashboard/chats/:id',
-        element: <Chatpage/>
+        path: '/',
+        element: <Homepage/>
       },
       {
-        path: '/dashboard',
-        element: <Dashboard/>,
+        children: [
+          {
+            path: '/dashboard/chats/:id',
+            element: <Chatpage/>
+          },
+          {
+            path: '/dashboard',
+            element: <Dashboard/>,
+          }
+        ]
+      },
+      {
+        path: '/signin',
+        element: <SigninPage/>
+      },
+      {
+        path: '/signup',
+        element: <SignupPage/>
       }
     ]
-  },
-  {
-    path: '/signin',
-    element: <SigninPage/>
-  },
-  {
-    path: '/signup',
-    element: <SignupPage/>
   }
 ])
 
